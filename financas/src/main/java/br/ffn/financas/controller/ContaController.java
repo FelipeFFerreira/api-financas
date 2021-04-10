@@ -28,5 +28,34 @@ public class ContaController {
 	public ResponseEntity<List <Conta>> getAll() {
 		return ResponseEntity.ok(service.findAll());
 	}
-
+	
+	@GetMapping(value = "/{id}")
+	public ResponseEntity<?> get(@PathVariable("id") Long id) {
+		Conta _conta = service.find(id);
+		if (_conta != null)
+			return ResponseEntity.ok(_conta);
+		return ResponseEntity.status(HttpStatus.CREATED).build();
+	}
+	
+	@PostMapping
+	public ResponseEntity<Conta> post(@RequestBody Conta conta) {
+		service.create(conta);
+		return ResponseEntity.ok(conta);
+	}
+	
+	@PutMapping
+	public ResponseEntity<?> put(@RequestBody Conta conta) {
+		if (service.update(conta)) {
+			return ResponseEntity.ok(conta);
+		}
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+	}
+	
+	@DeleteMapping(value = "/{id}")
+	public ResponseEntity<?> delete(@PathVariable("id") Long id) {
+		if (service.delete(id)) {
+			return ResponseEntity.ok().build();
+		}
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+	}
 }

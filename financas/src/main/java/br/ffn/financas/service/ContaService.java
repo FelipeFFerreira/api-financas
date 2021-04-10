@@ -10,7 +10,9 @@ public class ContaService {
 	private static List<Conta> contas = new ArrayList<>();
 	private static Long nextId = 1L;
 	
-	public ContaService(Conta conta) {
+	public ContaService() {}
+	
+	public void create(Conta conta) {
 		conta.setId(nextId++);
 		contas.add(conta);
 	}

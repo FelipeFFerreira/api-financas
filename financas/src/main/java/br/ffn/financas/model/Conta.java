@@ -14,10 +14,7 @@ public class Conta implements Serializable {
 	private String titular;
 	private Float saldo;
 	
-	public Conta() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	public Conta() { }
 	
 	public Conta(Long id) {
 		this.id = id;
