@@ -34,7 +34,7 @@ public class ContaController {
 		Conta _conta = service.find(id);
 		if (_conta != null)
 			return ResponseEntity.ok(_conta);
-		return ResponseEntity.status(HttpStatus.CREATED).build();
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 	}
 	
 	@PostMapping
